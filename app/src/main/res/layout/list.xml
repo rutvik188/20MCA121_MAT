@@ -5,6 +5,7 @@
     android:layout_marginRight="10dp"
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"
+    android:id="@+id/cd"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -38,7 +39,7 @@
                 android:id="@+id/txtname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Description"
+                android:text="demo"
                 android:textSize="18dp"
                 android:textStyle="bold"/>
 
@@ -49,7 +50,7 @@
                 android:id="@+id/txtdept"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Author"
+                android:text="demo"
                 android:textSize="18dp"
                 android:textStyle="bold"/>
 

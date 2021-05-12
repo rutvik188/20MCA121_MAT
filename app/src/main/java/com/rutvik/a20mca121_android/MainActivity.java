@@ -3,6 +3,7 @@ package com.rutvik.a20mca121_android;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -65,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         Log.i("onSuccess", "onSuccess: ");
                         Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(MainActivity.this,ListActivity.class);
+                        startActivity(intent);
+                        finish();
 
                     }
                 });

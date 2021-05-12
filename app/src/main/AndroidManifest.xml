@@ -9,6 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.20MCA121_Android">
+        <activity android:name=".RViewActivity"
+            android:parentActivityName=".ListActivity">
+
+        </activity>
         <activity android:name=".MainActivity">
 
         </activity>

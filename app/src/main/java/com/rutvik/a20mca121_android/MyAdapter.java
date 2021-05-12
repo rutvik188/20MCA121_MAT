@@ -1,6 +1,7 @@
 package com.rutvik.a20mca121_android;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -39,10 +42,22 @@ public class MyAdapter extends FirebaseRecyclerAdapter<Model, MyAdapter.PastView
     protected void onBindViewHolder(@NonNull PastViewHolder holder, final int i, @NonNull final Model model) {
 
 
-
         holder.id.setText(model.getId());
         holder.name.setText(model.getName());
         holder.dept.setText(model.getDept());
+
+holder.cd.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent=new Intent(context,RViewActivity.class);
+        intent.putExtra("gid",model.getId());
+        intent.putExtra("gname",model.getName());
+        intent.putExtra("gdept",model.getDept());
+
+        context.startActivity(intent);
+
+    }
+});
 
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,16 +80,16 @@ public class MyAdapter extends FirebaseRecyclerAdapter<Model, MyAdapter.PastView
             public void onClick(View view) {
                 final DialogPlus dialog = DialogPlus.newDialog(context)
                         .setGravity(Gravity.CENTER)
-                        .setMargin(50,0,50,0)
+                        .setMargin(50, 0, 50, 0)
                         .setContentHolder(new ViewHolder(R.layout.content))
                         .setExpanded(false)  // This will enable the expand feature, (similar to android L share dialog)
                         .create();
 
-                View holderView = (LinearLayout)dialog.getHolderView();
+                View holderView = (LinearLayout) dialog.getHolderView();
 
                 final EditText id = holderView.findViewById(R.id.txtuId);
                 final EditText name = holderView.findViewById(R.id.txtuName);
-                final EditText dept = holderView.findViewById(R.id.txtuName);
+                final EditText dept = holderView.findViewById(R.id.txtudept);
 
 
                 id.setText(model.getId());
@@ -87,10 +102,10 @@ public class MyAdapter extends FirebaseRecyclerAdapter<Model, MyAdapter.PastView
                     @Override
                     public void onClick(View view) {
 
-                        Map<String,Object> map = new HashMap<>();
-                        map.put("id",id.getText().toString());
-                        map.put("name",name.getText().toString());
-                        map.put("dept",dept.getText().toString());
+                        Map<String, Object> map = new HashMap<>();
+                        map.put("id", id.getText().toString());
+                        map.put("name", name.getText().toString());
+                        map.put("dept", dept.getText().toString());
 
                         FirebaseDatabase.getInstance().getReference()
                                 .child("Demo")
@@ -122,12 +137,11 @@ public class MyAdapter extends FirebaseRecyclerAdapter<Model, MyAdapter.PastView
         return new PastViewHolder(view);
     }
 
-    class PastViewHolder extends RecyclerView.ViewHolder{
+    class PastViewHolder extends RecyclerView.ViewHolder {
 
         TextView id, name, dept;
-        ImageView edit,delete;
-
-
+        ImageView edit, delete;
+        CardView cd;
 
 
         public PastViewHolder(@NonNull View itemView) {
@@ -137,8 +151,10 @@ public class MyAdapter extends FirebaseRecyclerAdapter<Model, MyAdapter.PastView
             dept = itemView.findViewById(R.id.txtdept);
             edit = itemView.findViewById(R.id.btnedit);
             delete = itemView.findViewById(R.id.btndelete);
+            cd=itemView.findViewById(R.id.cd);
+
 
 
         }
-    }
+}
 }
