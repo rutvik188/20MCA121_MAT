@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 Log.i("onComplete", "onComplete: ");
-                                Toast.makeText(MainActivity.this, "Complete", Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(MainActivity.this, "Complete", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         Log.i("onSuccess", "onSuccess: ");
                         Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
+
                     }
                 });
 
