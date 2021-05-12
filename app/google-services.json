@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "551677972559",
+    "project_id": "mca121-android",
+    "storage_bucket": "mca121-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:551677972559:android:6128f69e30e37b26cbda3a",
+        "android_client_info": {
+          "package_name": "com.rutvik.a20mca121_android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "551677972559-ch6ltfo8im73efkb6k635f45nn0kadmf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUS5WCbEPxEdTfO6eTW0iTSnskFyX8L44"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "551677972559-ch6ltfo8im73efkb6k635f45nn0kadmf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
