@@ -1,38 +1,31 @@
 package com.rutvik.a20mca121_android;
 
 public class Model {
-    String id,name,dept;
+    String email;
+    String pass;
 
     public Model() {
     }
 
     public Model(String id, String name, String dept) {
-        this.id = id;
-        this.name = name;
-        this.dept = dept;
+        this.email = id;
+        this.pass = name;
     }
 
-    public String getId() {
-        return id;
+    public String getEmail() {
+        return email;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getPass() {
+        return pass;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
-    public String getDept() {
-        return dept;
-    }
-
-    public void setDept(String dept) {
-        this.dept = dept;
-    }
 }

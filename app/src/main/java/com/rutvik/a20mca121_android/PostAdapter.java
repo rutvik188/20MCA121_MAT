@@ -25,29 +25,30 @@ import com.orhanobut.dialogplus.ViewHolder;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MyAdapter extends FirebaseRecyclerAdapter<Model, MyAdapter.PastViewHolder> {
+public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostAdapter.PastViewHolder> {
 
     private Context context;
 
-    public MyAdapter(@NonNull FirebaseRecyclerOptions<Model> options, Context context) {
+    public PostAdapter(@NonNull FirebaseRecyclerOptions<Post> options, Context context) {
         super(options);
         this.context = context;
     }
 
 
     @Override
-    protected void onBindViewHolder(@NonNull PastViewHolder holder, final int i, @NonNull final Model model) {
+    protected void onBindViewHolder(@NonNull PastViewHolder holder, final int i, @NonNull final Post post) {
 
 
-        holder.email.setText(model.getEmail());
-        holder.pass.setText(model.getPass());
 
+        holder.title.setText(post.getTitle());
+        holder.description.setText(post.getDescription());
+        holder.author.setText(post.getAuthor());
 
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseDatabase.getInstance().getReference()
-                        .child("user")
+                        .child("Post")
                         .child(getRef(i).getKey())
                         .setValue(null)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -64,32 +65,35 @@ public class MyAdapter extends FirebaseRecyclerAdapter<Model, MyAdapter.PastView
             public void onClick(View view) {
                 final DialogPlus dialog = DialogPlus.newDialog(context)
                         .setGravity(Gravity.CENTER)
-                        .setMargin(50, 0, 50, 0)
-                        .setContentHolder(new ViewHolder(R.layout.content))
+                        .setMargin(50,0,50,0)
+                        .setContentHolder(new ViewHolder(R.layout.book))
                         .setExpanded(false)  // This will enable the expand feature, (similar to android L share dialog)
                         .create();
 
-                View holderView = (LinearLayout) dialog.getHolderView();
+                View holderView = (LinearLayout)dialog.getHolderView();
 
-                final EditText id = holderView.findViewById(R.id.txtemail);
-                final EditText name = holderView.findViewById(R.id.txtpass);
+                final EditText title = holderView.findViewById(R.id.title);
+                final EditText description = holderView.findViewById(R.id.description);
+                final EditText author = holderView.findViewById(R.id.author);
 
 
-                id.setText(model.getEmail());
-                name.setText(model.getPass());
+                title.setText(post.getTitle());
+                description.setText(post.getDescription());
+                author.setText(post.getAuthor());
 
-                Button update = holderView.findViewById(R.id.btnupdate);
+                Button update = holderView.findViewById(R.id.update);
 
                 update.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 
-                        Map<String, Object> map = new HashMap<>();
-                        map.put("email", id.getText().toString());
-                        map.put("pass", name.getText().toString());
+                        Map<String,Object> map = new HashMap<>();
+                        map.put("title",title.getText().toString());
+                        map.put("description",description.getText().toString());
+                        map.put("author",author.getText().toString());
 
                         FirebaseDatabase.getInstance().getReference()
-                                .child("user")
+                                .child("Post")
                                 .child(getRef(i).getKey())
                                 .updateChildren(map)
                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -114,27 +118,28 @@ public class MyAdapter extends FirebaseRecyclerAdapter<Model, MyAdapter.PastView
     @Override
     public PastViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list, parent, false);
+                .inflate(R.layout.post, parent, false);
         return new PastViewHolder(view);
     }
 
-    class PastViewHolder extends RecyclerView.ViewHolder {
+    class PastViewHolder extends RecyclerView.ViewHolder{
 
-        TextView email, pass, bookname;
-        ImageView edit, delete;
+        TextView title,description,author;
+        ImageView edit,delete;
+
 
 
 
         public PastViewHolder(@NonNull View itemView) {
             super(itemView);
-            email = itemView.findViewById(R.id.txtvemil);
-            pass = itemView.findViewById(R.id.txtvpass);
-            edit = itemView.findViewById(R.id.btnedit);
-            delete = itemView.findViewById(R.id.btndelete);
-
-
+            title = itemView.findViewById(R.id.title);
+            description = itemView.findViewById(R.id.description);
+            author = itemView.findViewById(R.id.author);
+            edit = itemView.findViewById(R.id.edit);
+            delete = itemView.findViewById(R.id.delete);
 
 
         }
+    }
 }
-}
+

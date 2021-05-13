@@ -15,7 +15,6 @@ import com.google.firebase.database.FirebaseDatabase;
 public class ListActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MyAdapter adapter;
-    private FloatingActionButton add;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,19 +25,13 @@ public class ListActivity extends AppCompatActivity {
 
         FirebaseRecyclerOptions<Model> options =
                 new FirebaseRecyclerOptions.Builder<Model>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Demo"), Model.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("user"), Model.class)
                         .build();
 
         adapter = new MyAdapter(options,this);
         recyclerView.setAdapter(adapter);
 
-        add = findViewById(R.id.add);
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ListActivity.this, MainActivity.class));
-            }
-        });
+
     }
     @Override
     protected void onStart() {
