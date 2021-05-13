@@ -27,7 +27,7 @@
                 android:id="@+id/txtvemil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Id"
+                android:text="Email"
                 android:textSize="24dp"
                 android:textColor="#000000"
                 android:textStyle="bold"/>
@@ -39,7 +39,7 @@
                 android:id="@+id/txtvpass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="demo"
+                android:text="Pass"
                 android:textSize="18dp"
                 android:textStyle="bold"/>
 

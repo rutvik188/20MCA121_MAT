@@ -120,7 +120,7 @@ public class MyAdapter extends FirebaseRecyclerAdapter<Model, MyAdapter.PastView
 
     class PastViewHolder extends RecyclerView.ViewHolder {
 
-        TextView email, pass, bookname;
+        TextView email, pass;
         ImageView edit, delete;
 
 

@@ -7,7 +7,7 @@ public class Model {
     public Model() {
     }
 
-    public Model(String id, String name, String dept) {
+    public Model(String id, String name) {
         this.email = id;
         this.pass = name;
     }
